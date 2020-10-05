@@ -1,37 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" class="container-fluid">
     <nav>
-      <router-link class="btn btn-primary" to="/">Cars</router-link>
+      <router-link class="btn btn-primary" to="/cars">Cars</router-link>
       <router-link class="btn btn-primary" to="/add">Add</router-link>
       <router-link class="btn btn-primary" to="/search">Search</router-link>
     </nav>
+    <br/>
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+  name: "app"
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.site-info {
+  color: blue;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  margin-right: 5px;
+}
+
+.container-fluid {
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

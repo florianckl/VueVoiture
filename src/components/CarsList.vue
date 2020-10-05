@@ -35,7 +35,8 @@ export default {
       http
           .get("/cars")
           .then(response => {
-            this.cars = response.data; // JSON are parsed automatically.
+            this.cars = response.data.nom; // JSON are parsed automatically.
+
             console.log(response.data);
           })
           .catch(e => {
@@ -48,6 +49,7 @@ export default {
     /* eslint-enable no-console */
   },
   mounted() {
+
     this.retrieveCars();
   }
 };
