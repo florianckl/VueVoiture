@@ -13,16 +13,10 @@
     <div>
       <label>Prix: </label> {{this.car.prix}}
     </div>
-    <div>
-      <label>Active: </label> {{this.car.active}}
-    </div>
 
-    <span v-if="this.car.active"
-          v-on:click="updateActive(false)"
-          class="button is-small btn-primary">Inactive</span>
-    <span v-else
-          v-on:click="updateActive(true)"
-          class="button is-small btn-primary">Active</span>
+    <span
+          v-on:click="modifier"
+          class="button is-small btn-primary">modifier</span>
 
     <span class="button is-small btn-danger" v-on:click="deleteCar()">Delete</span>
   </div>
@@ -40,19 +34,17 @@ export default {
   props: ["car"],
   methods: {
     /* eslint-disable no-console */
-    updateActive(status) {
+    modifier() {
       var data = {
         id: this.car.id,
         marque: this.car.marque,
         nom: this.car.nom,
-        prix: this.car.prix,
-        active: status
+        prix: this.car.prix
       };
 
       http
           .put("/car/" + this.car.id, data)
           .then(response => {
-            this.car.active = response.data.active;
             console.log(response.data);
           })
           .catch(e => {
@@ -61,7 +53,7 @@ export default {
     },
     deleteCar() {
       http
-          .delete("/car/" + this.car.id)
+          .delete("/cars/delete/" + this.car.id)
           .then(response => {
             console.log(response.data);
             this.$emit("refreshData");
@@ -70,6 +62,7 @@ export default {
           .catch(e => {
             console.log(e);
           });
+
     }
     /* eslint-enable no-console */
   }

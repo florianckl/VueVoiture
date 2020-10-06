@@ -1,5 +1,4 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
 
 <template>
   <div class="list row">
@@ -11,7 +10,7 @@
           <router-link :to="{
                             name: 'car-details',
                             params: { car:car }}"
-          >{{car.nom}}, {{car.marque}}, {{car.prix}}{{src}}</router-link>
+          >{{car.nom}}, {{car.marque}}, {{car.prix}}{{car.image}}</router-link>
           <img :src="src"  alt="">
         </li>
       </ul>
@@ -45,7 +44,7 @@ export default {
           .get("/cars")
           .then(response => {
             this.cars = response.data; // JSON are parsed automatically.
-            //this.imageName=response.data.car.image;
+            this.imageName=response.data.car.image;
             console.log(response.data);
           })
           .catch(e => {
@@ -62,7 +61,7 @@ export default {
 
         let config = {
           // example url
-          url: "http://localhost:8080/download/Capture2.png",
+          url: "http://localhost:8080/download/"+this.car.image,
           method: 'GET',
           responseType: 'arraybuffer'
         }
