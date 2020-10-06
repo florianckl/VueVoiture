@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CarsList from "../components/CarsList.vue";
 import AddCar from "../components/AddCar.vue";
-import SearchCars from "../components/SearchCars.vue";
 import Car from "../components/Car.vue";
 
 Vue.use(VueRouter)
@@ -26,11 +25,6 @@ const routes = [
         path: "/add",
         name: "add",
         component: AddCar
-    },
-    {
-        path: "/search",
-        name: "search",
-        component: SearchCars
     }
 ]
 

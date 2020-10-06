@@ -1,10 +1,9 @@
 <template>
   <div id="app" class="container-fluid">
-    <nav>
+    <div>
       <router-link class="btn btn-primary" to="/cars">Cars</router-link>
       <router-link class="btn btn-primary" to="/add">Add</router-link>
-      <router-link class="btn btn-primary" to="/search">Search</router-link>
-    </nav>
+    </div>
     <br/>
     <router-view/>
   </div>
@@ -18,12 +17,13 @@ export default {
 
 <style>
 .site-info {
-  color: blue;
+  color: red;
   margin-bottom: 20px;
 }
 
 .btn-primary {
   margin-right: 5px;
+
 }
 
 .container-fluid {
