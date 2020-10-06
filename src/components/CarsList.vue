@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="list row">
     <div class="col-md-6">
@@ -24,13 +22,12 @@
 <script>
 
 import http from "../http-common";
-import * as axios from "axios";
+//import * as axios from "axios";
 
 export default {
   name: "cars-list",
   data() {
     return {
-      imageName:null,
       cars: [],
       linke:"",
       files:null,
@@ -44,7 +41,6 @@ export default {
           .get("/cars")
           .then(response => {
             this.cars = response.data; // JSON are parsed automatically.
-            this.imageName=response.data.car.image;
             console.log(response.data);
           })
           .catch(e => {
@@ -58,10 +54,10 @@ export default {
           this.files = res.data;
         })
       },*/
-
+/*
         let config = {
           // example url
-          url: "http://localhost:8080/download/"+this.car.image,
+          url: "http://localhost:8080/download/"+"capture2.png",
           method: 'GET',
           responseType: 'arraybuffer'
         }
@@ -71,7 +67,7 @@ export default {
               var bytes = new Uint8Array(response.data);
               var binary = bytes.reduce((data, b) => data += String.fromCharCode(b), '');
               this.src = "data:image/png;base64," + btoa(binary);
-            });
+            });*/
     },
 
       /*
