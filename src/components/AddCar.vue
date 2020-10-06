@@ -78,19 +78,20 @@ export default {
           'Content-Type' : 'multipart/form-data'
         }
       }
-
-      //fd.append('file',this.selectedfile,this.selectedfile.name)
-      http
-          .post("/uploadfile", fd,config)
-          .then(response => {
-            this.car.id = response.data.id;
-            console.log(response.data);
-          })
-          .catch(e => {
-            console.log(e);
-          });
-
+      if(this.selectedfile!=null) {
+        //fd.append('file',this.selectedfile,this.selectedfile.name)
+        http
+            .post("/uploadfile", fd, config)
+            .then(response => {
+              this.car.id = response.data.id;
+              console.log(response.data);
+            })
+            .catch(e => {
+              console.log(e);
+            });
+      }
       this.submitted = true;
+
     },
     newCar() {
       this.submitted = false;

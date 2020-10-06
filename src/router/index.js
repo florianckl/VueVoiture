@@ -14,7 +14,7 @@ const routes = [
         component: CarsList,
         children: [
             {
-                path: "/car/:id",
+                path: "/car/",
                 name: "car-details",
                 component: Car,
                 props: true
