@@ -2,42 +2,40 @@
   <div>
     <section class="panier">
       <h2>Panier</h2>
-
-      <car-panier
-          v-for="item in getId"
-          :id="item.id"
-          :marque="item.marque"
-          :nom="item.nom"
-          :prix="item.prix"
-          :image="item.image"
-          :key="item.id"
-      />
+      <div>{{getCars.length}}</div>
+      <li v-for="id in getCars" :key="id">
+        <div>{{test(id)}}</div>
+      </li>
     </section>
   </div>
 </template>
 
 
 <script>
-import CarPanier from "../components/CarPanier"
 import { mapGetters} from "vuex"
 
 
 export default {
   name: "Panier",
-  components: {
-    CarPanier
-  },
+  data() {
+    return {
+      carPaniers: null
+    }
+
+},
   computed: {
     ...mapGetters({
-      getId:"getId"
+      getCars:"getCars"
     }),
   },
   methods:{
-    maj(){
-      return this.$store.getters.getId;
+    test(id){
+      if (id!==','){
+        return id;
+      }else{
+        return null;
+      }
     }
   }
-
-
 }
 </script>

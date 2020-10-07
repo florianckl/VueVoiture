@@ -5,11 +5,13 @@
       <h4>Cars List</h4>
       <ul>
         <li v-for="(car, id) in cars" :key="id">
+
           <router-link :to="{
                             name: 'car-details',
                             params: { car:car }}"
           >{{car.nom}}, {{car.marque}}, {{car.prix}}{{car.image}}</router-link>
-          <button v-on:click="ajouterDansPanier(car)" class="btn btn-success">Acheter</button>
+          <button v-on:click="ajouterDansPanier(car.id)" class="btn btn-success">Acheter</button>
+          {{count}}
         </li>
       </ul>
     </div>
@@ -31,14 +33,19 @@ export default {
   data (){
 
     return {
-      cars: []
+      cars: [],
+      count:0
 
     };
   },
+  computed:{
+
+  },
 
   methods: {
-    ajouterDansPanier:function (car){
-      this.$store.dispatch("majPanier",car);
+    ajouterDansPanier:function (id){
+      this.count++;
+      this.$store.dispatch("majPanier",id);
       //this.selectedCars.append(car);
     },
     /* eslint-disable no-console */
