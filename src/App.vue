@@ -3,6 +3,8 @@
     <div>
       <router-link class="btn btn-primary" to="/cars">Cars</router-link>
       <router-link class="btn btn-primary" to="/add">Add</router-link>
+      <router-link class="btn btn-primary" to="/panier">Panier</router-link>
+
     </div>
     <br/>
     <router-view/>

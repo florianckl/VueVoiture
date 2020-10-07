@@ -61,8 +61,13 @@ import * as axios from "axios";
 export default {
   name: "car",
   props: ["car"],
+
   data() {
     return {
+      id:0,
+      marque:"",
+      name:"",
+      prix:0,
       modifDemandee: false,
       selectedfile: null,
       src:"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"

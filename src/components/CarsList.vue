@@ -9,7 +9,7 @@
                             name: 'car-details',
                             params: { car:car }}"
           >{{car.nom}}, {{car.marque}}, {{car.prix}}{{car.image}}</router-link>
-          <img :src="src"  alt="">
+          <button v-on:click="ajouterDansPanier(car)" class="btn btn-success">Acheter</button>
         </li>
       </ul>
     </div>
@@ -23,16 +23,24 @@
 
 import http from "../http-common";
 
+
+
 export default {
   name: "cars-list",
-  data() {
+  props: ["selectedCars"],
+  data (){
+
     return {
-      cars: [],
-      files:null,
-      src:"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      cars: []
+
     };
   },
+
   methods: {
+    ajouterDansPanier:function (car){
+      this.$store.dispatch("majPanier",car);
+      //this.selectedCars.append(car);
+    },
     /* eslint-disable no-console */
     retrieveCars() {
       http
