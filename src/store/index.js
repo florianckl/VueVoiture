@@ -9,18 +9,19 @@ export default new Vuex.Store({
         carPanier:[]
     },
     getters: {
-        getCars: state => {
+         getCars: state => {
             return `${state.carPanier}`
         }
     },
     mutations: {
-        ajoutCar(state, id) {
-            state.carPanier.push(id);
+        ajoutCar(state, car) {
+            state.carPanier=car;
+            //state.carPanier=Array.from(new Set(state.carPanier));
         }
     },
     actions: {
-        majPanier({ commit }, id) {
-            commit("ajoutCar", id)
+        majPanier({ commit }, car) {
+            commit("ajoutCar", car)
         }
     },
     modules: {}

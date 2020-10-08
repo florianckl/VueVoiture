@@ -3,8 +3,8 @@
     <section class="panier">
       <h2>Panier</h2>
       <div>{{getCars.length}}</div>
-      <li v-for="id in getCars" :key="id">
-        <div>{{test(id)}}</div>
+      <li v-for="car in getCars" :key="car.id">
+        <div>{{car.marque}}</div>
       </li>
     </section>
   </div>

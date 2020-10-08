@@ -10,7 +10,7 @@
                             name: 'car-details',
                             params: { car:car }}"
           >{{car.nom}}, {{car.marque}}, {{car.prix}}{{car.image}}</router-link>
-          <button v-on:click="ajouterDansPanier(car.id)" class="btn btn-success">Acheter</button>
+          <button v-on:click="ajouterDansPanier(car)" class="btn btn-success">Acheter</button>
           {{count}}
         </li>
       </ul>
@@ -43,9 +43,9 @@ export default {
   },
 
   methods: {
-    ajouterDansPanier:function (id){
+    ajouterDansPanier:function (car){
       this.count++;
-      this.$store.dispatch("majPanier",id);
+      this.$store.dispatch("majPanier",{id:car.id,marque:car.marque,nom:car.nom,prix:car.prix,image:car.image});
       //this.selectedCars.append(car);
     },
     /* eslint-disable no-console */
