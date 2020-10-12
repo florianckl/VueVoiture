@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "CarPanier",
+  name: "carPanier",
   props: {
 
     marque: {

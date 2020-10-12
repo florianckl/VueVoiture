@@ -2,7 +2,7 @@
   <div>
     <section class="favoris">
       <h2>Favoris</h2>
-      <div>{{getCars}}</div>
+        <div>{{getCars}}</div>
     </section>
   </div>
 </template>
@@ -13,7 +13,7 @@ import { mapGetters} from "vuex"
 
 
 export default {
-  name: "Panier",
+  name: "Favoris",
   data() {
     return {
       carPanier: []
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getCars:"getCarsPanier"
+      getCars:"getCarsFavoris"
     }),
   },
   methods:{
@@ -33,8 +33,8 @@ export default {
     test(){
       for (var id in this.getCars){
         console.log(id+"")
-        this.carPanier=id;
-      }
+          this.carPanier=id;
+        }
 
     }
   }

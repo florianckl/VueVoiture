@@ -25,8 +25,8 @@
       <h4>Car</h4>
       <div>
         <div class="col-md-6">
-          <div>{{affichageVoiture()}}</div>
-          <div class="container"><img :src="src"  alt=""></div>
+          <div>{{ affichageVoiture() }}</div>
+          <div class="container"><img :src="src" alt=""></div>
 
         </div>
 
@@ -44,7 +44,12 @@
       <div class="form-group">
         <label>Prix: </label> {{ this.car.prix }}
       </div>
-
+      <div class="form-group">
+        <button v-on:click="ajouterDansPanier" class="btn btn-success">Acheter</button>
+        <input type="checkbox" id="checkbox" value=1 v-model="checkedCategories" @change="ajoutDansFavori">
+        <label for="checkbox">favori</label>
+        {{ checkedCategories }}
+      </div>
       <span
           v-on:click="demandeModification"
           class="button is-small btn-primary">modifier</span>
@@ -64,21 +69,32 @@ export default {
 
   data() {
     return {
-      id:0,
-      marque:"",
-      name:"",
-      prix:0,
+      checkedCategories: false,
+      id: 0,
+      marque: "",
+      name: "",
+      prix: 0,
+      favori: 0,
+      panier: 0,
       modifDemandee: false,
       selectedfile: null,
-      src:"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      src: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     };
   },
-  computed: {
-
-  },
+  computed: {},
 
   methods: {
-    affichageVoiture(){
+    ajoutDansFavori(){
+      this.$store.dispatch("carFavori",this.car.id);
+
+      this.$emit('message-sent',"dsgdgsd");
+    },
+    ajouterDansPanier(){
+      this.panier++;
+      this.$store.dispatch("carPanier",this.car.id);
+      console.log(this.panier);
+    },
+    affichageVoiture() {
       let config = {
         // example url
         url: "http://localhost:8080/download/" + this.car.image,
@@ -168,7 +184,7 @@ export default {
 };
 </script>
 <style>
-.container{
+.container {
   max-height: 300px;
   max-width: 2400px;
   width: 420px;

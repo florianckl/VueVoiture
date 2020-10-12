@@ -4,7 +4,9 @@ import CarsList from "../components/CarsList.vue";
 import AddCar from "../components/AddCar.vue";
 import Car from "../components/Car.vue";
 import Panier from "../components/Panier.vue";
-import CarPanier from "../components/CarPanier.vue";
+import Favoris from "../components/Favoris.vue";
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,6 +22,17 @@ const routes = [
                 component: Car,
                 props: true
             },
+            {
+                path: "/panier/",
+                name: "panier",
+                component: Panier,
+                props: true
+            },{
+                path: "/favoris/",
+                name: "favoris",
+                component: Favoris,
+                props: true
+            }
 
         ]
     },
@@ -27,16 +40,6 @@ const routes = [
         path: "/add",
         name: "add",
         component: AddCar
-    },
-    {
-        path: "/panier",
-        name: "panier",
-        component: Panier
-    },
-    {
-        path: "/carPanier",
-        name: "carPanier",
-        component: CarPanier
     }
 ]
 

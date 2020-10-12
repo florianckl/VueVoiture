@@ -5,23 +5,34 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-
+        carFavori:[],
         carPanier:[]
     },
     getters: {
-         getCars: state => {
+         getCarsFavoris: state => {
+            return `${state.carFavori}`
+        },
+        getCarsPanier: state => {
             return `${state.carPanier}`
         }
     },
     mutations: {
-        ajoutCar(state, car) {
-            state.carPanier=car;
-            //state.carPanier=Array.from(new Set(state.carPanier));
+        ajoutCarFavoris(state, id) {
+            state.carFavori.push(id)
+            //console.log(state.carFavori+"")
+            state.carFavori=Array.from(new Set(state.carFavori));
+        },
+        ajoutCarPanier(state, id) {
+            state.carPanier.push(id);
+            state.carPanier=Array.from(new Set(state.carPanier));
         }
     },
     actions: {
-        majPanier({ commit }, car) {
-            commit("ajoutCar", car)
+        carFavori({ commit }, id) {
+            commit("ajoutCarFavoris", id)
+        },
+        carPanier({ commit }, id) {
+            commit("ajoutCarPanier", id)
         }
     },
     modules: {}
