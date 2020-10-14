@@ -67,7 +67,7 @@ export default {
     },
     /* eslint-disable no-console */
     retrieveCars() {
-      let url="/cars";
+      let url="/vehicules";
       console.log("picked"+this.picked);
       if (this.picked==="Prix"){
         console.log("prix");
