@@ -1,6 +1,12 @@
 <template>
   <div class="submitform">
     <div v-if="!submitted">
+      <input type="radio" id="one" value="Voiture" v-model="car.type">
+      <label for="one">Voiture</label>
+      <br>
+      <input type="radio" id="two" value="Moto" v-model="car.type">
+      <label for="two">Moto</label>
+      <br>
       <div class="form-group">
         <label for="marque">Marque</label>
         <input type="text" class="form-control" id="marque" required v-model="car.marque" name="name">
@@ -37,7 +43,9 @@ export default {
   data() {
     return {
       selectedfile:null,
+
       car: {
+        type:"",
         id: 0,
         marque:"",
         nom: "",
@@ -54,6 +62,7 @@ export default {
     /* eslint-disable no-console */
     saveCar() {
       var data = {
+        type: this.car.type,
         marque: this.car.marque,
         nom: this.car.nom,
         prix: this.car.prix,
